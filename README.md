@@ -6,25 +6,57 @@
     16.04
 ### nopassword sudo
 run sudo without password, to do as followed:
-```golang
+```
 sudo vi /etc/sudoers
 ```
 and add the following line at last line:
-```golang
+```
 yourusername ALL=(ALL) NOPASSWD:ALL
 ```
 and save it with `wq!`.
 
 if you receive the err info:
-```golang
+```
 sudo: parse error in /etc/sudoers near line 24
 sudo: no valid sudoers sources found, quitting
 sudo: unable to initialize policy plugin
 ```
 
 run command to edit sudoers file:
-```golang
+```
 pkexec visudo
+```
+### zsh
+Prereq:
+```
+apt-get install zsh
+apt-get install git-core
+```
+Getting zsh to work in ubuntu is weird, since sh does not understand the source command. So, you do this to install zsh
+```
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+```
+and then you change your shell to zsh
+```
+chsh -s `which zsh`
+```
+and then restart
+```
+sudo shutdown -r 0
+```
+### pbcopy
+install xclip
+```
+sudo apt-get install xclip -y
+```
+add followed lines to ~/.zshrc
+```
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+```
+then refresh your zsh to import your new settings
+```
+source ~/.zshrc
 ```
 
 ### set launcher bottom
